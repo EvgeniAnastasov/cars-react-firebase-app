@@ -1,14 +1,24 @@
 import './Login.css'
 
 export const Login = () => {
+
+    const onLogin = (e) => {
+        e.preventDefault()
+        console.log('login')
+
+        const { email, password, } = Object.fromEntries(new FormData(e.target))
+        console.log(email, password);
+    }
+
     return (
         <section className='login'>
-            <form>
+
+            <form onSubmit={onLogin}>
                 <fieldset>
                     <legend>Login</legend>
 
-                    <input htmlFor="email" className="email" name="email" type="text" placeholder="Email" />
-                    <input id="password" className="password" name="password" type="password" placeholder="Password" />
+                    <input name="email" type="email" placeholder="Email" />
+                    <input name="password" type="password" placeholder="Password" />
 
                     <button type="submit" className="loginbtn">Login</button>
 

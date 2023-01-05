@@ -34,7 +34,7 @@ input {
     transition: all 0.3s ease;
 }
 
-input[type=text],
+input[type=email],
 input[type=password] {
     font-size: 1.2em;
     line-height: 1;
@@ -43,7 +43,8 @@ input[type=password] {
 }
 
 .loginbtn,
-.registerbtn {
+.registerbtn,
+.addbtn {
     width: 120px;
     height: 40px;
     cursor: pointer;
