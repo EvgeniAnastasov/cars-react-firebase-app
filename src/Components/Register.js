@@ -13,7 +13,7 @@ export const Register = () => {
         console.log(registerPassword)
         console.log(registerConfirmPassword)
 
-        if(registerPassword != registerConfirmPassword) {
+        if(registerPassword !== registerConfirmPassword) {
             alert('wrong')
         }
     }

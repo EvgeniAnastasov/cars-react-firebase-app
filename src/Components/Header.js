@@ -6,7 +6,7 @@ export const Header = () => {
         <header>
             <nav>
                 <img src={car2} alt="car" />
-                <a href="#">Home</a>
+                <a href="/">Home</a>
                 <ul>
 
                     <li><a href="/add">Add Car</a></li>
