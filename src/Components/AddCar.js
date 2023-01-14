@@ -3,16 +3,21 @@ import { db } from '../firebase'
 import { useState } from 'react'
 import './AddCar.css'
 import { Navigate, useNavigate } from 'react-router-dom'
+import { storage } from '../firebase'
+import { ref, uploadBytes } from 'firebase/storage'
+import { v4 } from 'uuid'
 // import firebase from 'firebase'
 
 export const AddCar = () => {
-    const [carBrand, setCarBrand] = useState('')
-    const [carModel, setCarModel] = useState('')
-    const [hp, setHp] = useState('')
-    const [year, setYear] = useState('')
-    const [type, setType] = useState('')
-    const [engine, setEngine] = useState('')
-    const [transmission, settransmission] = useState('')
+    const [carBrand, setCarBrand] = useState('');
+    const [carModel, setCarModel] = useState('');
+    const [hp, setHp] = useState('');
+    const [year, setYear] = useState('');
+    const [type, setType] = useState('');
+    const [engine, setEngine] = useState('');
+    const [transmission, setTransmission] = useState('');
+    // const [imgUpload, setImgUpload] = useState(null);
+    const [imgUrl, setImgUrl] = useState('');
 
     let navigate = useNavigate();
 
@@ -27,8 +32,15 @@ export const AddCar = () => {
             Type: type,
             Engine: engine,
             Transmission: transmission,
+            ImageUrl: imgUrl,
             timestamp: serverTimestamp()
         });
+
+        // const imageRef = ref(storage, `images/${imgUpload.name + v4()}`);
+        // uploadBytes(imageRef, imgUpload).then(() => {
+        //     alert('Image uploaded')
+        // })
+
         navigate('/')
     }
 
@@ -62,6 +74,7 @@ export const AddCar = () => {
                             value={type}
                             onChange={(e) => setType(e.target.value)}
                         >
+                            <option >-- select an option --</option>
                             <option>Sedan</option>
                             <option>Hatchback</option>
                             <option>Convertable</option>
@@ -86,11 +99,22 @@ export const AddCar = () => {
                         <label htmlFor='transmission'>Transmission: </label>
                         <select id='transmission'
                             value={transmission}
-                            onChange={(e) => settransmission(e.target.value)}
+                            onChange={(e) => setTransmission(e.target.value)}
                         >
                             <option>Manual</option>
                             <option>Auto</option>
                         </select>
+
+                        <input type="text" placeholder="Car Image URL"
+                            value={imgUrl}
+                            onChange={(e) => setImgUrl(e.target.value)}
+                        />
+
+                        {/* <label htmlFor='upload-img'>Upload Image: </label>
+                        <input type='file' id='upload-img'
+                            // value={imgUpload}
+                            onChange={(e) => setImgUpload(e.target.files[0])}
+                        ></input> */}
 
 
                         <button className="addbtn">Add Car</button>

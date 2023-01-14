@@ -2,7 +2,7 @@ import './Home.css'
 import { useEffect, useState } from 'react'
 import { query, collection, onSnapshot, addDoc, deleteDoc, doc, updateDoc, serverTimestamp, orderBy } from 'firebase/firestore'
 import { db } from '../firebase'
-import { Car } from '../Car'
+import { Car } from './Car'
 
 
 export const Home = () => {
