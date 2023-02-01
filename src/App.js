@@ -5,8 +5,10 @@ import { Login } from './Components/Login';
 import { Register } from './Components/Register'
 import { AddCar } from './Components/AddCar';
 import { Home } from './Components/Home';
+import { CarEdit } from './Components/CarEdit';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { CarDetails } from './Components/CarDetails';
 
 function App() {
     return (
@@ -18,7 +20,9 @@ function App() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/add' element={<AddCar />} />
+                <Route path='/details/:carId' element={<CarDetails />} />
                 <Route path='/' element={< Home />} />
+                <Route path='/edit/:carId' element={<CarEdit />} />
 
             </Routes>
 
