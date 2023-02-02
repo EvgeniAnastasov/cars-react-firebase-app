@@ -78,7 +78,7 @@ export const AddCar = () => {
                             <option>Sedan</option>
                             <option>Hatchback</option>
                             <option>Convertable</option>
-                            <option>Sport car</option>
+                            <option>Sport Car</option>
                             <option>Estate</option>
                             <option>SUV</option>
                             <option>VAN</option>
