@@ -1,12 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
-import './CarDetails.css'
+import '../main.css'
 import { useEffect, useState } from 'react'
 import { query, collection, onSnapshot, doc, getDoc, getDocs } from 'firebase/firestore'
 import { db } from '../firebase'
 import { async } from '@firebase/util';
 import * as firestore from "firebase/firestore";
 
-export const CarDetails = ({ car }) => {
+export const CarDetails = () => {
 
     let { carId } = useParams();
 
@@ -33,11 +33,11 @@ export const CarDetails = ({ car }) => {
     return (
         <section id="detailsPage">
             <div className="wrapper">
-                <div className="albumCover">
+                <div className="carImg">
                     <img src={currentCar.ImageUrl} />
                 </div>
-                <div className="albumInfo">
-                    <div className="albumText">
+                <div className="carInfo">
+                    <div className="carText">
 
                         <h1>Car Brand: {currentCar.CarBrand}</h1>
                         <h3>Car model: {currentCar.CarModel}</h3>
@@ -49,13 +49,12 @@ export const CarDetails = ({ car }) => {
 
                     </div>
 
-                    <div className="actionBtn">
+                    <div className="detailsBtn">
                         <Link to={`/edit/${carId}`} className="edit">Edit</Link>
-                        <Link to={`/delete/${carId}`} state={currentCar}  className="remove">Delete</Link>
+                        <Link to={`/delete/${carId}`} state={currentCar} className="remove">Delete</Link>
+                    </div>
                 </div>
             </div>
-        </div>
         </section >
     )
 }
-// state={{ currentCar }}

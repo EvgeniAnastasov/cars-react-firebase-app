@@ -25,7 +25,7 @@ export const CarDelete = () => {
     }
 
     return (
-        <section className="editPage">
+        <section className="deletePage">
 
             <fieldset>
                 <legend>Delete Car</legend>

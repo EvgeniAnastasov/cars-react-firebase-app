@@ -1,5 +1,5 @@
 import car2 from '../images/car2.jpg'
-import './Header.css'
+import '../main.css'
 
 export const Header = () => {
     return (

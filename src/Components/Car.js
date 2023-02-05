@@ -18,9 +18,7 @@ export const Car = ({ car }) => {
                     <p>Transmission: {car.Transmission}</p>
 
                 </div>
-                <div className="btn-group">
-                    {/* <Link to={{ pathname: `/details/${car.id}`, state: { car } }} id="details">Details</Link> */}
-
+                <div className="carbtn">
                     <Link to={`/details/${car.id}`} state={{ car }} id="details">Details</Link>
                 </div>
             </div>

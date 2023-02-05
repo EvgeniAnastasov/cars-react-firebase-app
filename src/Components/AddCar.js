@@ -1,7 +1,7 @@
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useState } from 'react'
-import './AddCar.css'
+import '../main.css'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { storage } from '../firebase'
 import { ref, uploadBytes } from 'firebase/storage'

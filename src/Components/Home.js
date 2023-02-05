@@ -1,4 +1,4 @@
-import './Home.css'
+import '../main.css'
 import { useEffect, useState } from 'react'
 import { query, collection, onSnapshot, addDoc, deleteDoc, doc, updateDoc, serverTimestamp, orderBy } from 'firebase/firestore'
 import { db } from '../firebase'

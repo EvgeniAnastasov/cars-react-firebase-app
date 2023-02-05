@@ -1,0 +1,391 @@
+/* Header */
+
+nav {
+    background-color: #000000;
+    width: 100%;
+    display: flex;
+    font-size: 16px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 5px;
+    margin: 0;
+    color: white;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    margin: 20px;
+    padding: 0.5em;
+}
+
+nav ul {
+    margin: 0 0 0 auto;
+}
+
+nav ul li {
+    display: inline;
+    /* margin: 0 2px; */
+}
+
+/* nav a {
+    border-radius: 50%;
+} */
+
+nav a:hover {
+    cursor: pointer;
+    color: #45a29e;
+}
+
+nav>img {
+    width: 90px;
+    height: 80px;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+/* Footer */
+
+footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
+    color: #c5c6c7;
+    background-color: black;
+}
+
+/* Home */
+
+.card-box {
+    box-shadow: 0px 0px 30px 0px;
+    padding: 20px;
+    margin-left: 120px;
+    background-position: right 35% bottom 45%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    float: left;
+    height: 550px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 70px;
+    margin-top: 20px;
+}
+
+.carbtn {
+    margin-top: 40px;
+}
+
+.carbtn>a {
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background: rgb(13, 50, 77);
+    background: linear-gradient(90deg, rgba(13, 50, 77, 1) 34%, rgba(26, 76, 96, 1) 100%);
+    color: white;
+    font-family: "Lato";
+    font-size: 20px;
+    padding: 8px;
+    text-decoration: none;
+    /* border: none; */
+    /* border-radius: 10px; */
+    /* display: inline; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* background-color: #1b2845; */
+    /* background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%); */
+    /* background-size: 200% 100%; */
+    /* background-position: left; */
+    /* background-repeat: no-repeat; */
+    /* transition: 500ms; */
+
+    /* margin-bottom: 10px; */
+    /* margin-top: 20px; */
+}
+
+.carbtn>a:hover {
+    background-position: right;
+    background: #25626f;
+}
+
+
+#catalogPage h1 {
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 26px;
+    font-family: 'Lato';
+    text-shadow: 5px 2px black;
+}
+
+#catalogPage>p {
+    font-size: 40px;
+    color: #45a29e;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 30px;
+    text-shadow: 2px 2px black solid;
+}
+
+.card-box>img {
+    display: block;
+    width: 250px;
+    border-radius: 15px;
+}
+
+/* CarDetails */
+
+.wrapper {
+    height: 400px;
+    width: 1000px;
+    margin: 30px auto;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 0px 0px 1.5px 3px gray;
+    margin-bottom: 200px;
+}
+
+.carImg {
+    float: left;
+    height: 100%;
+    width: auto;
+    margin-right: 20px;
+}
+
+.carImg img {
+    border-radius: 7px 0 0 7px;
+    height: 100%;
+}
+
+.carText {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.carText h1 {
+    color: gainsboro;
+    font-weight: bolder;
+    font-size: 28px;
+}
+
+.carText h3 {
+    margin: 8px 8px 47px 18px;
+    font-size: 18px;
+    color: gainsboro;
+    letter-spacing: 0.1em;
+    margin-bottom: 0;
+}
+
+.carText h4 {
+    margin: 8px 0 10px 18px;
+    font-size: 16px;
+    color: gainsboro;
+    letter-spacing: 0.1em;
+}
+
+.detailsBtn {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    /* left: auto; */
+    /* top: auto; */
+    /* right: 0; */
+    /* bottom: 0; */
+}
+
+.detailsBtn>a {
+    /* width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background: rgb(13, 50, 77);
+    background: linear-gradient(90deg, rgba(13, 50, 77, 1) 34%, rgba(26, 76, 96, 1) 100%);
+    color: white;
+    font-family: "Lato";
+    font-size: 20px;
+    padding: 8px;
+    text-decoration: none; */
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background: rgb(13, 50, 77);
+    background: linear-gradient(90deg, rgba(13, 50, 77, 1) 34%, rgba(26, 76, 96, 1) 100%);
+
+    /* border: none; */
+    /* border-radius: 10px; */
+    /* display: inline; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* background-color: #1b2845; */
+    /* background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%); */
+    /* background-size: 200% 100%; */
+    /* background-position: left; */
+    /* background-repeat: no-repeat; */
+    /* transition: 500ms; */
+    color: white;
+    /* font-family: "Lato"; */
+    font-size: 20px;
+    /* margin-bottom: 10px; */
+    margin-top: 10px;
+    padding: 6px;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+.detailsBtn>a:hover {
+    /* background-position: right; */
+    background: #25626f;
+}
+
+
+/* AddCar */
+
+select {
+    border-radius: 3px;
+    border: 1px solid #384049;
+    background: #15171b;
+    width: 104%;
+    transition: all 0.3s ease;
+    font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 0.5em 0;
+    color: #949496;
+    display: block;
+
+}
+
+label {
+    color: #949496;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+/* Delete */
+
+.deletePage {
+    color: #e7e9eb;
+}
+
+.actionBtn {
+    padding-top: 10px;
+}
+
+.deletebtn {
+    width: 130px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background: rgb(13, 50, 77);
+    background: linear-gradient(90deg, rgba(13, 50, 77, 1) 34%, rgba(26, 76, 96, 1) 100%);
+    color: white;
+    font-size: 20px;
+    margin: 0 20px;
+}
+
+.deletebtn:hover {
+    /* background-position: right; */
+    background: #25626f;
+}
+
+
+/* Common */
+
+fieldset {
+    margin: 5em auto;
+    padding: 2em;
+    width: 25em;
+    border-radius: 8px;
+    border-color: #2d333b;
+    background: #1b1f24;
+    box-shadow: 0 4px 4px #131518;
+}
+
+fieldset legend {
+    color: white;
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: center;
+    border: 2px solid #2d333b;
+    border-radius: 4px;
+    background: #171a1e;
+    /* display: block; */
+    width: 100%;
+    margin: 0 auto;
+}
+
+input {
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid #384049;
+    background: #15171b;
+    display: block;
+    width: 100%;
+    color: white;
+    /* transition: all 2s ease; */
+}
+
+input[type=email],
+input[type=text],
+input[type=password] {
+    font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 1em 0;
+}
+
+/* input[type=file] {
+    font-size: 1em;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 1em 0;
+    color: #949496;
+} */
+
+.loginbtn,
+.registerbtn,
+.addbtn {
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 10px;
+    /* display: inline; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* background-color: #1b2845; */
+    background: rgb(13, 50, 77);
+    background: linear-gradient(90deg, rgba(13, 50, 77, 1) 34%, rgba(26, 76, 96, 1) 100%);
+    /* background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%); */
+    /* background-size: 200% 100%; */
+    /* background-position: left; */
+    /* background-repeat: no-repeat; */
+    /* transition: 500ms; */
+    color: white;
+    /* font-family: "Lato"; */
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.loginbtn:hover,
+.registerbtn:hover,
+.addbtn:hover {
+    background: #25626f;
+}
+
+.additional {
+    color: #c5c6c7;
+}

@@ -1,4 +1,4 @@
-import './Login.css'
+import '../main.css'
 
 export const Login = () => {
 
