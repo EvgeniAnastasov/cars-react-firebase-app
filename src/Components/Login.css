@@ -55,7 +55,8 @@ input[type=file] {
 
 .loginbtn,
 .registerbtn,
-.addbtn {
+.addbtn,
+.deletebtn {
     width: 120px;
     height: 40px;
     cursor: pointer;

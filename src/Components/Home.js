@@ -8,6 +8,7 @@ import { Car } from './Car'
 export const Home = () => {
 
     const [cars, setCars] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const q = query(collection(db, 'cars'))
@@ -17,18 +18,22 @@ export const Home = () => {
                 carsArr.push({ ...doc.data(), id: doc.id })
             });
             setCars(carsArr)
+            setIsLoading(false)
         })
         return () => unsubscribe()
-
     }, [])
 
 
     return (
         <section id="catalogPage">
 
-            {cars.length < 1 ? <p>No Cars Available!</p> : <h1>All Cars</h1>}
 
-            {cars.map((car, index) => (<Car key={index} car={car} />))}
+            {cars.length < 1 && !isLoading ? <p>No Cars Available!</p> : <h1>All Cars</h1>}
+
+            {isLoading ?
+                <h1>Loaging...</h1> :
+                cars.map((car, index) => (<Car key={index} car={car} />))
+            }
 
         </section>
     )

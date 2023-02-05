@@ -51,10 +51,11 @@ export const CarDetails = ({ car }) => {
 
                     <div className="actionBtn">
                         <Link to={`/edit/${carId}`} className="edit">Edit</Link>
-                        <a href="#" className="remove">Delete</a>
-                    </div>
+                        <Link to={`/delete/${carId}`} state={currentCar}  className="remove">Delete</Link>
                 </div>
             </div>
-        </section>
+        </div>
+        </section >
     )
 }
+// state={{ currentCar }}

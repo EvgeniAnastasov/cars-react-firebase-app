@@ -10,8 +10,6 @@ export const CarEdit = () => {
     let { carId } = useParams();
     let navigate = useNavigate();
 
-    const [currentCar, setCurrentCar] = useState([])
-
     const [carBrand, setCarBrand] = useState('');
     const [carModel, setCarModel] = useState('');
     const [hp, setHp] = useState('');
@@ -21,12 +19,10 @@ export const CarEdit = () => {
     const [transmission, setTransmission] = useState('');
     const [imgUrl, setImgUrl] = useState('');
 
-
     useEffect(() => {
         const getData = async () => {
             const ref = doc(db, 'cars', carId)
             const snap = await getDoc(ref)
-            setCurrentCar(snap.data())
 
             setCarBrand(snap.data().CarBrand)
             setCarModel(snap.data().CarModel)
@@ -36,11 +32,9 @@ export const CarEdit = () => {
             setEngine(snap.data().Engine)
             setTransmission(snap.data().Transmission)
             setImgUrl(snap.data().ImageUrl)
-
         }
         getData()
     }, [])
-
 
     const onEdit = (e) => {
         e.preventDefault();
@@ -57,11 +51,9 @@ export const CarEdit = () => {
             Transmission: transmission,
             ImageUrl: imgUrl,
         })
-
+        
         navigate(`/details/${carId}`)
     }
-
-
 
     return (
         <section className="createPage">
@@ -71,26 +63,25 @@ export const CarEdit = () => {
 
                     <div className="container">
                         <input type="text" placeholder="Car Brand"
-                            defaultValue={currentCar.CarBrand}
+                            defaultValue={carBrand}
                             onChange={(e) => setCarBrand(e.target.value)}
-                        // onChange={(e) => setCurrentCar({...currentCar, CarBrand: e.target.value})}
                         />
                         <input type="text" placeholder="Car Model"
-                            defaultValue={currentCar.CarModel}
+                            defaultValue={carModel}
                             onChange={(e) => setCarModel(e.target.value)}
                         />
                         <input type="text" placeholder="HP"
-                            defaultValue={currentCar.HP}
+                            defaultValue={hp}
                             onChange={(e) => setHp(e.target.value)}
                         />
                         <input type="text" placeholder="Year"
-                            defaultValue={currentCar.Year}
+                            defaultValue={year}
                             onChange={(e) => setYear(e.target.value)}
                         />
 
                         <label htmlFor='type'>Type: </label>
                         <select id='type'
-                            value={currentCar.Type}
+                            value={type}
                             onChange={(e) => setType(e.target.value)}
                         >
                             <option >-- select an option --</option>
@@ -106,7 +97,7 @@ export const CarEdit = () => {
 
                         <label htmlFor='engine'>Engine: </label>
                         <select id='engine'
-                            value={currentCar.Engine}
+                            value={engine}
                             onChange={(e) => setEngine(e.target.value)}
                         >
                             <option>Petrol</option>
@@ -117,7 +108,7 @@ export const CarEdit = () => {
 
                         <label htmlFor='transmission'>Transmission: </label>
                         <select id='transmission'
-                            value={currentCar.Transmission}
+                            value={transmission}
                             onChange={(e) => setTransmission(e.target.value)}
                         >
                             <option>Manual</option>
@@ -125,16 +116,9 @@ export const CarEdit = () => {
                         </select>
 
                         <input type="text" placeholder="Car Image URL"
-                            defaultValue={currentCar.ImageUrl}
+                            defaultValue={imgUrl}
                             onChange={(e) => setImgUrl(e.target.value)}
                         />
-
-                        {/* <label htmlFor='upload-img'>Upload Image: </label>
-                    <input type='file' id='upload-img'
-                        // value={imgUpload}
-                        onChange={(e) => setImgUpload(e.target.files[0])}
-                    ></input> */}
-
 
                         <button className="addbtn">Edit Car</button>
                     </div>
