@@ -1,5 +1,6 @@
 import { useState } from "react"
-
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../firebase'
 
 export const Register = () => {
 
@@ -7,15 +8,26 @@ export const Register = () => {
     const [registerPassword, setRegisterPassword] = useState('')
     const [registerConfirmPassword, setRegisterConfirmPassword] = useState('')
 
-    const onRegister = (e) => {
-        e.preventDefault()
-        console.log(registerEmail)
-        console.log(registerPassword)
-        console.log(registerConfirmPassword)
+    const [user, setUser] = useState({})
 
-        if(registerPassword !== registerConfirmPassword) {
-            alert('wrong')
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    });
+
+    const onRegister = async (e) => {
+        e.preventDefault()
+
+        if (registerPassword !== registerConfirmPassword) {
+            return alert('passwords dont match')
         }
+
+        try {
+            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+            console.log(user);
+        } catch (error) {
+            console.log(error.message);
+        }
+
     }
 
 
@@ -59,6 +71,8 @@ export const Register = () => {
                     />
 
                     <button className="registerbtn">Register</button>
+
+                    <h2>{user?.email}</h2>
 
                     <p>
                         <span className="additional">If you already have profile click <a href="/login">here</a></span>

@@ -1,14 +1,22 @@
 import '../main.css'
 
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../firebase'
+
 export const Login = () => {
 
-    const onLogin = (e) => {
+    const onLogin = async (e) => {
         e.preventDefault()
-        console.log('login')
 
         const { email, password, } = Object.fromEntries(new FormData(e.target))
-        console.log(email, password);
-    }
+
+        try {
+            const user = await signInWithEmailAndPassword(auth, email, password);
+            console.log(user);
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 
     return (
         <section className='login'>
