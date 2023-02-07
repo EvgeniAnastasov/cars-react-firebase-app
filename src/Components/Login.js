@@ -1,9 +1,12 @@
 import '../main.css'
 
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../firebase'
+import { UserAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 export const Login = () => {
+
+    const { signIn } = UserAuth();
+    const navigate = useNavigate();
 
     const onLogin = async (e) => {
         e.preventDefault()
@@ -11,8 +14,8 @@ export const Login = () => {
         const { email, password, } = Object.fromEntries(new FormData(e.target))
 
         try {
-            const user = await signInWithEmailAndPassword(auth, email, password);
-            console.log(user);
+            await signIn(email, password)
+            navigate('/')
         } catch (error) {
             console.log(error.message);
         }

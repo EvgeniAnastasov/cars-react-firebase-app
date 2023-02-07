@@ -10,26 +10,31 @@ import { CarDelete } from './Components/CarDelete';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { CarDetails } from './Components/CarDetails';
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
     return (
 
-        <Router>
-            <Header />
+        <AuthContextProvider>
 
-            <Routes>
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/add' element={<AddCar />} />
-                <Route path='/details/:carId' element={<CarDetails />} />
-                <Route path='/' element={< Home />} />
-                <Route path='/edit/:carId' element={<CarEdit />} />
-                <Route path='/delete/:carId' element={<CarDelete />} />
+            <Router>
+                <Header />
 
-            </Routes>
+                <Routes>
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/add' element={<AddCar />} />
+                    <Route path='/details/:carId' element={<CarDetails />} />
+                    <Route path='/' element={< Home />} />
+                    <Route path='/edit/:carId' element={<CarEdit />} />
+                    <Route path='/delete/:carId' element={<CarDelete />} />
 
-            <Footer />
-        </Router>
+                </Routes>
+
+                <Footer />
+            </Router>
+
+        </AuthContextProvider>
     );
 }
 

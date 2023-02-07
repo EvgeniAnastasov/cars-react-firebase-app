@@ -1,13 +1,21 @@
 import car2 from '../images/car2.jpg'
 import '../main.css'
-
-import { signOut } from 'firebase/auth'
-import { auth } from '../firebase'
+import { useNavigate } from 'react-router-dom'
+import { UserAuth } from '../context/AuthContext'
 
 export const Header = () => {
 
+    const { user, logout } = UserAuth();
+
+    let navigate = useNavigate();
+
     const onLogout = async () => {
-        await signOut(auth)
+        try {
+            await logout()
+            navigate('/')
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     return (
@@ -15,13 +23,16 @@ export const Header = () => {
             <nav>
                 <img src={car2} alt="car" />
                 <a href="/">Home</a>
+                <h3>{user && user.email}</h3>
                 <ul>
 
                     <li><a href="/add">Add Car</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#" onClick={onLogout}>Logout</a></li>
-                    <li><a href="/register">Register</a></li>
-                    <li><a href="/login">Login</a></li>
+
+                    {user && <li><a href="#">Profile</a></li>}
+                    {user && <li><a href="#" onClick={onLogout}>Logout</a></li>}
+                    {!user && <li><a href="/register">Register</a></li>}
+                    {!user && <li><a href="/login">Login</a></li>}
+
 
                 </ul>
             </nav>

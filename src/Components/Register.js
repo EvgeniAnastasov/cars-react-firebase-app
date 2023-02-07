@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
-import { auth } from '../firebase'
+import { UserAuth } from '../context/AuthContext'
+import { useNavigate } from "react-router-dom"
 
 export const Register = () => {
 
@@ -8,39 +8,23 @@ export const Register = () => {
     const [registerPassword, setRegisterPassword] = useState('')
     const [registerConfirmPassword, setRegisterConfirmPassword] = useState('')
 
-    const [user, setUser] = useState({})
-
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
+    const { createUser } = UserAuth();
+    const navigate = useNavigate();
 
     const onRegister = async (e) => {
         e.preventDefault()
 
         if (registerPassword !== registerConfirmPassword) {
-            return alert('passwords dont match')
+            return alert('passwords do not match')
         }
 
         try {
-            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
-            console.log(user);
+            await createUser(registerEmail, registerPassword)
+            navigate('/')
         } catch (error) {
             console.log(error.message);
         }
-
     }
-
-
-    // const OnRegister = (e) => {
-    //     e.preventDefault()
-    //     // console.log('register')
-
-    //     const { email, password, confpassword } = Object.fromEntries(new FormData(e.target))
-
-    //     console.log(e.target.password.value) 
-
-    //     // console.log(email, password, confpassword)
-    // }
 
     return (
         <section className="register">
@@ -72,7 +56,7 @@ export const Register = () => {
 
                     <button className="registerbtn">Register</button>
 
-                    <h2>{user?.email}</h2>
+                    {/* <h2>{user?.email}</h2> */}
 
                     <p>
                         <span className="additional">If you already have profile click <a href="/login">here</a></span>
