@@ -27,7 +27,6 @@ export const Home = () => {
     return (
         <section id="catalogPage">
 
-
             {cars.length < 1 && !isLoading ? <p>No Cars Available!</p> : <h1>All Cars</h1>}
 
             {isLoading ?

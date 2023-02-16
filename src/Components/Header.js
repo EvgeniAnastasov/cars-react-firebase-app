@@ -28,7 +28,7 @@ export const Header = () => {
 
                     <li><a href="/add">Add Car</a></li>
 
-                    {user && <li><a href="#">Profile</a></li>}
+                    {/* {user && <li><a href="#">Profile</a></li>} */}
                     {user && <li><a href="#" onClick={onLogout}>Logout</a></li>}
                     {!user && <li><a href="/register">Register</a></li>}
                     {!user && <li><a href="/login">Login</a></li>}

@@ -17,6 +17,7 @@ export const Login = () => {
             await signIn(email, password)
             navigate('/')
         } catch (error) {
+            alert(error.message)
             console.log(error.message);
         }
     };

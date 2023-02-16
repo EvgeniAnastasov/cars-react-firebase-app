@@ -8,7 +8,7 @@ import { ref, uploadBytes } from 'firebase/storage'
 import { v4 } from 'uuid'
 // import firebase from 'firebase'
 
-export const AddCar = () => {
+export const CarAdd = () => {
     const [carBrand, setCarBrand] = useState('');
     const [carModel, setCarModel] = useState('');
     const [hp, setHp] = useState('');
@@ -90,6 +90,7 @@ export const AddCar = () => {
                             value={engine}
                             onChange={(e) => setEngine(e.target.value)}
                         >
+                            <option >-- select an option --</option>
                             <option>Petrol</option>
                             <option>Diesel</option>
                             <option>EV</option>
@@ -101,6 +102,7 @@ export const AddCar = () => {
                             value={transmission}
                             onChange={(e) => setTransmission(e.target.value)}
                         >
+                            <option >-- select an option --</option>
                             <option>Manual</option>
                             <option>Auto</option>
                         </select>

@@ -15,7 +15,7 @@ export const CarDelete = () => {
 
         deleteDoc(docRef)
             .then(() => {
-                console.log("Document has been deleted successfully.")
+                console.log("Car has been deleted successfully.")
             })
             .catch(error => {
                 console.log(error);
@@ -31,8 +31,8 @@ export const CarDelete = () => {
                 <legend>Delete Car</legend>
                 <div className="container">
 
-                    <h2>Are You Sure You Want To Delete :</h2>
-                    <h2>{carToDelete.CarBrand} {carToDelete.CarModel}</h2>
+                    <h2>Are you sure you want to delete :</h2>
+                    <h2>{carToDelete.CarBrand} {carToDelete.CarModel} ?</h2>
 
                     <div className="actionBtn">
                         <button className="deletebtn" type="submit" onClick={onDelete}>Delete Car</button>

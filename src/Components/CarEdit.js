@@ -51,7 +51,7 @@ export const CarEdit = () => {
             Transmission: transmission,
             ImageUrl: imgUrl,
         })
-        
+
         navigate(`/details/${carId}`)
     }
 
@@ -120,7 +120,12 @@ export const CarEdit = () => {
                             onChange={(e) => setImgUrl(e.target.value)}
                         />
 
-                        <button className="addbtn">Edit Car</button>
+                        {/* <button className="addbtn">Edit Car</button> */}
+
+                        <div className="actionBtn">
+                            <button className="deletebtn">Edit Car</button>
+                            <button className="deletebtn" onClick={() => navigate(`/details/${carId}`)}>Cancel</button>
+                        </div>
                     </div>
                 </fieldset>
             </form>

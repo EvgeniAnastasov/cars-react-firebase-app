@@ -18,10 +18,15 @@ export const Register = () => {
             return alert('passwords do not match')
         }
 
+        if (registerPassword.length === 0){
+            return alert ('Plaese enter a valid password!')
+        }
+
         try {
             await createUser(registerEmail, registerPassword)
             navigate('/')
         } catch (error) {
+            alert(error.message)
             console.log(error.message);
         }
     }
