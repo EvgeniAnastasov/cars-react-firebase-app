@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react'
 import { db } from '../firebase'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { useNavigate } from "react-router-dom";
-
+import { UserAuth } from "../context/AuthContext";
 
 export const CarEdit = () => {
 
     let { carId } = useParams();
     let navigate = useNavigate();
+    const { user } = UserAuth();
 
     const [carBrand, setCarBrand] = useState('');
     const [carModel, setCarModel] = useState('');
@@ -18,6 +19,10 @@ export const CarEdit = () => {
     const [engine, setEngine] = useState('');
     const [transmission, setTransmission] = useState('');
     const [imgUrl, setImgUrl] = useState('');
+    const [ownerID, setOwnerId] = useState('');
+
+    // console.log(`user: ${user.uid}`);
+    // console.log(ownerID);
 
     useEffect(() => {
         const getData = async () => {
@@ -32,12 +37,17 @@ export const CarEdit = () => {
             setEngine(snap.data().Engine)
             setTransmission(snap.data().Transmission)
             setImgUrl(snap.data().ImageUrl)
+            setOwnerId(snap.data().OwnerId)
         }
         getData()
     }, [])
 
     const onEdit = (e) => {
         e.preventDefault();
+
+        if(user.uid !==ownerID){
+            return alert('Only owner is allowed to edit car!');
+        }
 
         const docRef = doc(db, 'cars', carId)
 

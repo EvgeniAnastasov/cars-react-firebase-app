@@ -2,11 +2,13 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { doc, deleteDoc, getDoc } from "firebase/firestore";
 import { db } from '../firebase'
 import { useEffect, useState } from "react";
+import { UserAuth } from "../context/AuthContext";
 
 export const CarDelete = () => {
 
     let navigate = useNavigate();
     let { carId } = useParams();
+    const { user } = UserAuth();
 
     const [currentCar, setCurrentCar] = useState('')
 
@@ -24,6 +26,10 @@ export const CarDelete = () => {
     // const carToDelete = location.state;
 
     const onDelete = () => {
+
+        if (user.uid !== currentCar.OwnerId) {
+            return alert('Only owner is allowed to delete car!');
+        }
         const docRef = doc(db, 'cars', carId)
 
         deleteDoc(docRef)

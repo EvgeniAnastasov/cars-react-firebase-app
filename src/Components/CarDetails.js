@@ -5,10 +5,12 @@ import { query, collection, onSnapshot, doc, getDoc, getDocs } from 'firebase/fi
 import { db } from '../firebase'
 import { async } from '@firebase/util';
 import * as firestore from "firebase/firestore";
+import { UserAuth } from '../context/AuthContext';
 
 export const CarDetails = () => {
 
     let { carId } = useParams();
+    const { user } = UserAuth();
 
     const [currentCar, setCurrentCar] = useState([])
 
@@ -29,7 +31,6 @@ export const CarDetails = () => {
 
     }, [])
 
-
     return (
         <section id="detailsPage">
             <div className="wrapper">
@@ -46,12 +47,17 @@ export const CarDetails = () => {
                         <h4>Type: {currentCar.Type}</h4>
                         <h4>Engine: {currentCar.Engine}</h4>
                         <h4>Transmission: {currentCar.Transmission}</h4>
+                        <h4>Owner email: {currentCar.OwnerEmail}</h4>
 
                     </div>
 
                     <div className="detailsBtn">
-                        <Link to={`/edit/${carId}`} className="edit">Edit</Link>
-                        <Link to={`/delete/${carId}`} state={currentCar} className="remove">Delete</Link>
+                        {user.uid === currentCar.OwnerId && <Link to={`/edit/${carId}`} className="edit">Edit</Link>}
+                        {user.uid === currentCar.OwnerId && <Link to={`/delete/${carId}`} state={currentCar} className="remove">Delete</Link>}
+
+                        {user.uid !== currentCar.OwnerId && <Link to={`/`}>Back</Link>}
+
+
                     </div>
                 </div>
             </div>

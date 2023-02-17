@@ -6,6 +6,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import { storage } from '../firebase'
 import { ref, uploadBytes } from 'firebase/storage'
 import { v4 } from 'uuid'
+import { UserAuth } from '../context/AuthContext'
 // import firebase from 'firebase'
 
 export const CarAdd = () => {
@@ -20,6 +21,9 @@ export const CarAdd = () => {
     const [imgUrl, setImgUrl] = useState('');
 
     let navigate = useNavigate();
+    const { user } = UserAuth();
+
+    // console.log(user.email);
 
     const onAdd = (e) => {
         e.preventDefault()
@@ -33,7 +37,9 @@ export const CarAdd = () => {
             Engine: engine,
             Transmission: transmission,
             ImageUrl: imgUrl,
-            timestamp: serverTimestamp()
+            timestamp: serverTimestamp(),
+            OwnerId: user.uid,
+            OwnerEmail: user.email
         });
 
         // const imageRef = ref(storage, `images/${imgUpload.name + v4()}`);
