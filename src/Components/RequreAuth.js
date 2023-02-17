@@ -5,7 +5,5 @@ export const RequireAuth = ({ children }) => {
 
     const { user } = UserAuth();
 
-    console.log(user);
-
     return user ? children : <Navigate to='/login' replace />
 }

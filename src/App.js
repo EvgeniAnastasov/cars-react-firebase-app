@@ -7,6 +7,7 @@ import { CarAdd } from './Components/CarAdd';
 import { Home } from './Components/Home';
 import { CarEdit } from './Components/CarEdit';
 import { CarDelete } from './Components/CarDelete';
+import { NotFound404 } from './Components/NotFound404';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { CarDetails } from './Components/CarDetails';
@@ -29,6 +30,7 @@ function App() {
                     <Route path='/' element={< Home />} />
                     <Route path='/edit/:carId' element={<RequireAuth><CarEdit /></RequireAuth>} />
                     <Route path='/delete/:carId' element={<RequireAuth><CarDelete /></RequireAuth>} />
+                    <Route path='*' element={<NotFound404 />} />
 
                 </Routes>
 

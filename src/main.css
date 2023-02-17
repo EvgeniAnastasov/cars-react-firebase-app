@@ -389,3 +389,9 @@ input[type=password] {
 .additional {
     color: #c5c6c7;
 }
+
+.notfound {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}
