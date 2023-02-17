@@ -1,14 +1,27 @@
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { doc, deleteDoc } from "firebase/firestore";
+import { doc, deleteDoc, getDoc } from "firebase/firestore";
 import { db } from '../firebase'
+import { useEffect, useState } from "react";
 
 export const CarDelete = () => {
 
     let navigate = useNavigate();
     let { carId } = useParams();
 
-    const location = useLocation()
-    const carToDelete = location.state;
+    const [currentCar, setCurrentCar] = useState('')
+
+    useEffect(() => {
+        const getData = async () => {
+            const ref = doc(db, 'cars', carId)
+            const snap = await getDoc(ref)
+
+            setCurrentCar(snap.data())
+        }
+        getData()
+    }, [])
+
+    // const location = useLocation()
+    // const carToDelete = location.state;
 
     const onDelete = () => {
         const docRef = doc(db, 'cars', carId)
@@ -32,7 +45,7 @@ export const CarDelete = () => {
                 <div className="container">
 
                     <h2>Are you sure you want to delete :</h2>
-                    <h2>{carToDelete.CarBrand} {carToDelete.CarModel} ?</h2>
+                    <h2>{currentCar.CarBrand} {currentCar.CarModel} ?</h2>
 
                     <div className="actionBtn">
                         <button className="deletebtn" type="submit" onClick={onDelete}>Delete Car</button>
