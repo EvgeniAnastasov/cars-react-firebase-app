@@ -8,28 +8,51 @@ export const Register = () => {
     const [registerPassword, setRegisterPassword] = useState('')
     const [registerConfirmPassword, setRegisterConfirmPassword] = useState('')
 
+    const [emailError, setEmailError] = useState(null)
+    const [passwordError, setPasswordError] = useState(null)
+    const [errormessage, setErrrorMessage] = useState('') 
+
     const { createUser } = UserAuth();
     const navigate = useNavigate();
 
     const onRegister = async (e) => {
         e.preventDefault()
 
+        if (registerEmail.length == 0) {
+            return setEmailError(true)
+        }
+        if (registerPassword.length === 0) {
+            return setErrrorMessage('Plaese enter a valid password!')
+        }
         if (registerPassword !== registerConfirmPassword) {
-            return alert('passwords do not match')
+            return setErrrorMessage('Passwords do not match')
         }
 
-        if (registerPassword.length === 0){
-            return alert ('Plaese enter a valid password!')
+        else if (registerPassword.length === 0) {
+            return setErrrorMessage('Plaese enter a valid password!')
         }
 
         try {
             await createUser(registerEmail, registerPassword)
             navigate('/')
         } catch (error) {
-            alert(error.message)
-            console.log(error.message);
+            setErrrorMessage(error.message.substring(9))
+            // alert(error.message)
+            // console.log(error.message);
         }
     }
+
+    // validateEmail
+
+    const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+
+    const validateEmail = (e) => {
+        if (registerEmail.length == 0 || !regEx.test(registerEmail)) {
+            setEmailError(true)
+        }
+        else { setEmailError(false) }
+    }
+
 
     return (
         <section className="register">
@@ -42,6 +65,7 @@ export const Register = () => {
                         type="email"
                         placeholder="Email"
                         onChange={(e) => { setRegisterEmail(e.target.value) }}
+                        onBlur={validateEmail}
                         value={registerEmail}
                     />
                     <input
@@ -66,6 +90,14 @@ export const Register = () => {
                     <p>
                         <span className="additional">If you already have profile click <a href="/login">here</a></span>
                     </p>
+                    <p>
+                        {emailError && <span className="error">Please enter a valid email!</span>}
+                        
+                        <span className="error">{errormessage}</span>
+                    </p>
+                    {/* <p>
+                        {passwordError && <span className="error">Passwords do not match!</span>}
+                    </p> */}
                 </fieldset>
             </form>
         </section>
