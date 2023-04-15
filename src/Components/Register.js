@@ -18,7 +18,7 @@ export const Register = () => {
     const onRegister = async (e) => {
         e.preventDefault()
 
-        if (registerEmail.length == 0) {
+        if (registerEmail.length === 0) {
             return setEmailError(true)
         }
         if (registerPassword.length === 0) {
@@ -47,7 +47,7 @@ export const Register = () => {
     const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
     const validateEmail = (e) => {
-        if (registerEmail.length == 0 || !regEx.test(registerEmail)) {
+        if (registerEmail.length === 0 || !regEx.test(registerEmail)) {
             setEmailError(true)
         }
         else { setEmailError(false) }

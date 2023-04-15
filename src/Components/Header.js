@@ -23,10 +23,11 @@ export const Header = () => {
             <nav>
                 <img src={car2} alt="car" />
                 <a href="/">Home</a>
-                <h3>{user && user.email}</h3>
+                <a href="/add">Add Car</a>
+                
                 <ul>
 
-                    <li><a href="/add">Add Car</a></li>
+                    <li><a href="#">{user && user.email}</a></li>
 
                     {/* {user && <li><a href="#">Profile</a></li>} */}
                     {user && <li><a href="#" onClick={onLogout}>Logout</a></li>}
