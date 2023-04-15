@@ -1,8 +1,13 @@
-# Getting Started with cars-react-firebase-app
+# cars-react-firebase-app
 
 ## Description
 
 Single Page Application with React and Firebase
+
+## Functionality
+
+- Register/Login
+- full CRUD operation for logged in users only
 
 ## Used Technologies
 
